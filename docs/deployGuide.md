@@ -30,6 +30,9 @@ git init
 git remote add origin https://github.com/your-username/my-mkdocs-site.git
 ```
 ### GitHub에 푸시
+100MB를 초과하는 파일이 있으면 에러가 발생합니다.  
+주로 첨부파일, 정적배포파일로 인하여 발생할 수 있습니다.
+
 1. 변경된 파일들을 스테이징
 ```bash
 git add .
@@ -47,8 +50,18 @@ git branch -M main
 git push -u origin main
 ```
 ### 자동 배포 연동
-GitHub Actions를 이용한 자동 배포 설정
+GitHub Actions를 이용해 GitHub Pages에 자동 배포하는 CI/CD 설정
 
+1. GitHub Actions 권한 설정
+    1. 리포지토리 → Settings > Actions > General
+    1. Workflow permissions 항목에서 **Read and write permissions** 를 선택
+1. GitHub Pages 설정
+>GitHub Pages는 **public리포지토리**일 경우 무료로 사용가능합니다.
+    1. 리포지토리 → Settings → Pages
+    1. 다음과 같이 설정
+        * Source: Deploy from a branch
+        * Branch: gh-pages
+        * Folder: / (root)
 1. 프로젝트 디렉터리에 **.github**디렉터리를 생성한다.
 1. .github 디렉터리에 **workflows**디렉터리를 생성한다.
 1. workflows 디렉터리에 **deploy.yml**파일을 생성한다.
@@ -115,3 +128,8 @@ git push
 업로드가 완료되면, GitHub는 main 브랜치에 push가 발생했음을 감지하고,  
 `.github/workflows/deploy.yml` 파일에 따라 GitHub Actions가 자동 실행됩니다.
 1. GitHub에서 동작 확인
+    1. 리포지토리 페이지로 이동
+    1. 상단 탭 중 **Actions** 클릭
+    1. **“Add deploy.yml”**라는 워크플로가 실행되고 있어야 합니다.
+    1. 완료 표시가 뜨면 배포 성공
+1. 성공한 workflow에 들어가보면, *deploy*에 url이 표시되고 있습니다. 해당 url로 접속하면 확인가능합니다.
