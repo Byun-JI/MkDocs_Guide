@@ -1,12 +1,18 @@
 ## 정적 파일로 배포
 ### 방법1) 프로젝트 경로로 접근후 실행
-`mkdocs build`
+```bash
+mkdocs build
+```
 ### 방법2) 절대 경로로 실행
-`mkdocs build -f C:\test_project\mkdocs.yml`
+```bash
+mkdocs build -f C:\test_project\mkdocs.yml
+```
 ### 배포 결과물 확인
-기본 경로는 프로젝트 디렉터리 내부의 **site**디렉터리로 생성됩니다.  
-`--site-dir`옵션을 추가하면 출력물 위치도 지정할수 있습니다.  
-예시 : `mkdocs build --site-dir ./buildTest`
+기본 경로는 프로젝트 디렉터리 내부의 **site**디렉터리로 생성됩니다.
+>`--site-dir`옵션을 추가하면 출력물 위치도 지정할수 있습니다.  
+```bash
+mkdocs build --site-dir ./buildTest
+```
 
 ## GitHub기반 배포
 ### GitHub 리포지토리 생성
@@ -134,3 +140,4 @@ git push
     1. **“Add deploy.yml”**라는 워크플로가 실행되고 있어야 합니다.
     1. 완료 표시가 뜨면 배포 성공
 1. 성공한 workflow에 들어가보면, *deploy*에 url이 표시되고 있습니다. 해당 url로 접속하면 확인가능합니다.
+    * 이후로는 main브랜치에 push시 자동으로 Action이 동작하여 배포가 진행됩니다.
