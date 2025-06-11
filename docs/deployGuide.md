@@ -21,7 +21,9 @@ mkdocs build --site-dir ./buildTest
 1. 아래와 같이 설정:
     * Repository name: 예) my-mkdocs-site
     * Public 또는 Private 선택 (Pages 배포 목적이면 Public 권장)
+        * GitHub Pages서비스는 Public일때 무료
     * README 생성 여부는 선택사항 (없어도 문제 없음)
+
 >리포지토리 생성 후 주소 예시:
 >>https://github.com/your-username/my-mkdocs-site
 ### Git 초기화
