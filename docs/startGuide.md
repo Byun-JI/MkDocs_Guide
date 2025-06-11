@@ -1,12 +1,12 @@
 
 ## 프로젝트 생성
 ### 방법1) 원하는 경로에 접근후 생성
-```bash
+```
 mkdocs new test_project
 ```
 ![Screenshot](img/newProjectMake.png)
 ### 방법2) 절대 경로로 생성
-```bash
+```
 mkdocs new C:/test_project
 ```
 ### 프로젝트 생성 확인
@@ -18,12 +18,12 @@ mkdocs new C:/test_project
 mkdocs serve -a 127.0.0.1:8001
 ```
 ### 방법1) 프로젝트 경로로 접근후 실행
-```bash
+```
 mkdocs serve
 ```
 ![Screenshot](img/newProjectServerStart.png)
 ### 방법2) 절대 경로로 실행
-```bash
+```
 mkdocs serve -f C:\test_project\mkdocs.yml
 ```
 ### 서버 실행 확인

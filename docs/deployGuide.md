@@ -1,16 +1,16 @@
 ## 정적 파일로 배포
 ### 방법1) 프로젝트 경로로 접근후 실행
-```bash
+```
 mkdocs build
 ```
 ### 방법2) 절대 경로로 실행
-```bash
+```
 mkdocs build -f C:\test_project\mkdocs.yml
 ```
 ### 배포 결과물 확인
 기본 경로는 프로젝트 디렉터리 내부의 **site**디렉터리로 생성됩니다.
 >`--site-dir`옵션을 추가하면 출력물 위치도 지정할수 있습니다.  
-```bash
+```
 mkdocs build --site-dir ./buildTest
 ```
 
@@ -28,13 +28,13 @@ mkdocs build --site-dir ./buildTest
 >>https://github.com/your-username/my-mkdocs-site
 ### Git 초기화
 1. Git 저장소 초기화
-```bash
+```
 cd C:\test_project
 mkdocs new .
 git init
 ```
 1. GitHub 리포지토리와 연결
-```bash
+```
 git remote add origin https://github.com/your-username/my-mkdocs-site.git
 ```
 ### GitHub에 푸시
@@ -42,19 +42,19 @@ git remote add origin https://github.com/your-username/my-mkdocs-site.git
 주로 첨부파일, 정적배포파일로 인하여 발생할 수 있습니다.
 
 1. 변경된 파일들을 스테이징
-```bash
+```
 git add .
 ```
 1. 커밋(스냅샷) 생성
-```bash
+```
 git commit -m "Comment입니다."
 ```
 1. 브랜치 이름을 main으로 설정
-```bash
+```
 git branch -M main
 ```
 1. GitHub로 푸시
-```bash
+```
 git push -u origin main
 ```
 ### 자동 배포 연동
@@ -122,16 +122,16 @@ jobs:
 ```
 1. **.github/workflows/deploy.yml** 파일을 Git 스테이지에 추가
 해당 파일을 Git에 추적 대상으로 추가(staging) 합니다.
-```bash
+```
 git add .github/workflows/deploy.yml
 ```
 1. 변경사항을 커밋 (Git 히스토리에 기록)
-```bash
+```
 git commit -m "Add deploy.yml"
 ```
 1. GitHub로 푸시
 로컬에서 커밋한 내용을 GitHub의 main 브랜치에 업로드
-```bash
+```
 git push
 ```
 업로드가 완료되면, GitHub는 main 브랜치에 push가 발생했음을 감지하고,  

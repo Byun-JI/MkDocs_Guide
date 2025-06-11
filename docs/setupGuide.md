@@ -9,20 +9,20 @@
 ## 온라인 환경인 경우
 ### pip 최신화
 pip는 파이썬 설치시, 포함되어 있습니다.  
-```bash
+```
 pip install --upgrade pip
 ```
 ### MkDocs
 #### MkDocs설치
-```bash
+```
 pip install mkdocs
 ```
 #### MkDocs설치 확인
-```bash
+```
 mkdocs --version
 ```
 ### Material for MkDocs
-```bash
+```
 pip install mkdocs-material
 ```
 
@@ -32,11 +32,11 @@ pip install mkdocs-material
 * [MkDocs-Material](setup/mkdocs-material.zip)
 ### MkDocs
 *mkdocs.zip*파일의 압축을 **C:\\mkdocs**에서 해제후  
-```bash
+```
 pip install --no-index --find-links="C:\\mkdocs" mkdocs
 ```
 ### Material for MkDocs
 *mkdocs-material*파일의 압축을 **C:\\mkdocs-material**에서 해제후  
-```bash
+```
 pip install --no-index --find-links="C:\\mkdocs-material" mkdocs-materials
 ```
