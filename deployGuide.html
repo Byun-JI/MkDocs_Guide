@@ -671,6 +671,8 @@
 </span></code></pre></div></td></tr></table></div></li>
 </ol>
 <h3 id="github_2">GitHub에 푸시</h3>
+<p>100MB를 초과하는 파일이 있으면 에러가 발생합니다.<br />
+주로 첨부파일, 정적배포파일로 인하여 발생할 수 있습니다.</p>
 <ol>
 <li>변경된 파일들을 스테이징
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
@@ -686,8 +688,26 @@
 </span></code></pre></div></td></tr></table></div></li>
 </ol>
 <h3 id="_3">자동 배포 연동</h3>
-<p>GitHub Actions를 이용한 자동 배포 설정</p>
+<p>GitHub Actions를 이용해 GitHub Pages에 자동 배포하는 CI/CD 설정</p>
 <ol>
+<li>GitHub Actions 권한 설정<ol>
+<li>리포지토리 → Settings &gt; Actions &gt; General</li>
+<li>Workflow permissions 항목에서 <strong>Read and write permissions</strong> 를 선택</li>
+</ol>
+</li>
+<li>GitHub Pages 설정<blockquote>
+<p>GitHub Pages는 <strong>public리포지토리</strong>일 경우 무료로 사용가능합니다.</p>
+</blockquote>
+<ol>
+<li>리포지토리 → Settings → Pages</li>
+<li>다음과 같이 설정<ul>
+<li>Source: Deploy from a branch</li>
+<li>Branch: gh-pages</li>
+<li>Folder: / (root)</li>
+</ul>
+</li>
+</ol>
+</li>
 <li>프로젝트 디렉터리에 <strong>.github</strong>디렉터리를 생성한다.</li>
 <li>.github 디렉터리에 <strong>workflows</strong>디렉터리를 생성한다.</li>
 <li>
@@ -788,7 +808,14 @@
 </span></code></pre></div></td></tr></table></div>
 업로드가 완료되면, GitHub는 main 브랜치에 push가 발생했음을 감지하고,<br />
 <code>.github/workflows/deploy.yml</code> 파일에 따라 GitHub Actions가 자동 실행됩니다.</li>
-<li>GitHub에서 동작 확인</li>
+<li>GitHub에서 동작 확인<ol>
+<li>리포지토리 페이지로 이동</li>
+<li>상단 탭 중 <strong>Actions</strong> 클릭</li>
+<li><strong>“Add deploy.yml”</strong>라는 워크플로가 실행되고 있어야 합니다.</li>
+<li>완료 표시가 뜨면 배포 성공</li>
+</ol>
+</li>
+<li>성공한 workflow에 들어가보면, <em>deploy</em>에 url이 표시되고 있습니다. 해당 url로 접속하면 확인가능합니다.</li>
 </ol>
 
 
