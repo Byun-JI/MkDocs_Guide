@@ -16,7 +16,7 @@ mkdocs build --site-dir ./buildTest
 
 ## GitHub기반 배포
 ### GitHub 리포지토리 생성
-1. [GitHub](https://github.com) 로그인
+1. [GitHub](https://github.com/login) 로그인
 1. [New repository](https://github.com/new) 선택
 1. 아래와 같이 설정:
     * Repository name: 예) my-mkdocs-site
