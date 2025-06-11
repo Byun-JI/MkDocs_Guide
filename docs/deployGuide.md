@@ -79,10 +79,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3  # 코드 내려받기
 
-      - name: Set up Python 3.8.2
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8.2'  # Python 버전을 정확히 3.8.2로 고정
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
