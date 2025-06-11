@@ -50,7 +50,8 @@ git branch -M main
 git push -u origin main
 ```
 ### 자동 배포 연동
-GitHub Actions를 이용해 GitHub Pages에 자동 배포하는 CI/CD 설정
+GitHub Actions를 이용해 GitHub Pages에 자동 배포하는 CI/CD 설정  
+아래의 설정을 마치면, 이후로는 main 브랜치가 갱신될 때 자동으로 배포가 이루어 진다.
 
 1. GitHub Actions 권한 설정
     1. 리포지토리 → Settings > Actions > General

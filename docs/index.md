@@ -1,1 +1,1 @@
-# MkDocs & Materal for MkDocs 설치 및 매뉴얼
+# MkDocs & Material for MkDocs 설치 및 매뉴얼
