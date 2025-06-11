@@ -22,10 +22,10 @@ jobs:
           pip install mkdocs mkdocs-material
 
       - name: Build the site
-        run: mkdocs build --strict  # site/ 디렉터리 생성
+        run: mkdocs build --strict  # site/ 디렉터리 생성, --strict : 누락된 링크나 문서가 있을 경우 실패하게 함 (선택 사항)
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v4  # site/ 결과물을 gh-pages 브랜치에 자동 푸시
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub가 기본 제공하는 인증 토큰 (별도 설정 필요 없음)
           publish_dir: ./site  # 빌드 결과물 경로
