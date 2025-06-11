@@ -5,12 +5,15 @@ theme:
   language: ko
   features:
     - content.code.copy           # 코드에 복사버튼 추가
+    - content.code.select
 markdown_extensions:
   - pymdownx.highlight:           # 코드 블록의 하이라이트
+      auto_title: false           # Code 타입 표시
+      linenums: true              # 라인넘버
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite
+  - pymdownx.inlinehilite         # 인라인 하이라이트
   - pymdownx.snippets
   - pymdownx.superfences
 

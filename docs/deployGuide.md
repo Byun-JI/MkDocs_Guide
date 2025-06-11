@@ -18,17 +18,100 @@
     * README 생성 여부는 선택사항 (없어도 문제 없음)
 >리포지토리 생성 후 주소 예시:
 >>https://github.com/your-username/my-mkdocs-site
-### 로컬 MkDocs 프로젝트의 Git 초기화
+### Git 초기화
+1. Git 저장소 초기화
 ```bash
 cd C:\test_project
 mkdocs new .
 git init
+```
+1. GitHub 리포지토리와 연결
+```bash
 git remote add origin https://github.com/your-username/my-mkdocs-site.git
 ```
 ### GitHub에 푸시
+1. 변경된 파일들을 스테이징
 ```bash
 git add .
-git commit -m "Initial MkDocs setup"
+```
+1. 커밋(스냅샷) 생성
+```bash
+git commit -m "Comment입니다."
+```
+1. 브랜치 이름을 main으로 설정
+```bash
 git branch -M main
+```
+1. GitHub로 푸시
+```bash
 git push -u origin main
 ```
+### 자동 배포 연동
+GitHub Actions를 이용한 자동 배포 설정
+
+1. 프로젝트 디렉터리에 **.github**디렉터리를 생성한다.
+1. .github 디렉터리에 **workflows**디렉터리를 생성한다.
+1. workflows 디렉터리에 **deploy.yml**파일을 생성한다.
+>디렉터리 구조 예시
+```
+MkDocs_Guide/
+├── mkdocs.yml
+├── docs/
+│   └── index.md
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+```
+
+1. **.github/workflows/deploy.yml**파일의 내용은 다음과 같이 작성한다.
+```yaml
+name: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches: [main]  # main 브랜치에 push할 때마다 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # GitHub가 제공하는 Ubuntu 런타임에서 실행
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # 코드 내려받기
+
+      - name: Set up Python 3.8.2
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.2'  # Python 버전을 정확히 3.8.2로 고정
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material
+
+      - name: Build the site
+        run: mkdocs build --strict  # site/ 디렉터리 생성, --strict : 누락된 링크나 문서가 있을 경우 실패하게 함 (선택 사항)
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4  # site/ 결과물을 gh-pages 브랜치에 자동 푸시
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub가 기본 제공하는 인증 토큰 (별도 설정 필요 없음)
+          publish_dir: ./site  # 빌드 결과물 경로
+
+```
+1. **.github/workflows/deploy.yml** 파일을 Git 스테이지에 추가
+해당 파일을 Git에 추적 대상으로 추가(staging) 합니다.
+```bash
+git add .github/workflows/deploy.yml
+```
+1. 변경사항을 커밋 (Git 히스토리에 기록)
+```bash
+git commit -m "Add deploy.yml"
+```
+1. GitHub로 푸시
+로컬에서 커밋한 내용을 GitHub의 main 브랜치에 업로드
+```bash
+git push
+```
+업로드가 완료되면, GitHub는 main 브랜치에 push가 발생했음을 감지하고,  
+`.github/workflows/deploy.yml` 파일에 따라 GitHub Actions가 자동 실행됩니다.
+1. GitHub에서 동작 확인
