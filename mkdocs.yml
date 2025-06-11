@@ -1,0 +1,24 @@
+site_name: MkDocs & Material for MkDocs 설치 및 매뉴얼
+use_directory_urls: false         # 웹서버가 디렉터리로 오인하지 않도록 하는 옵션
+theme: 
+  name: material
+  language: ko
+  features:
+    - content.code.copy           # 코드에 복사버튼 추가
+markdown_extensions:
+  - pymdownx.highlight:           # 코드 블록의 하이라이트
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - MkDocs에 대해서: about.md
+  - 시작하기:
+    - 설치하기: setupGuide.md
+    - 문서 생성하기: startGuide.md
+  - MkDocs 문법: grammar.md
+  - 배포하기: deployGuide.md
